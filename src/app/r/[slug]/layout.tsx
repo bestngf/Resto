@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import ThemeProvider from "@/components/branding/ThemeProvider";
 import SiteNav from "@/components/branding/SiteNav";
 import ClosedBanner from "@/components/branding/ClosedBanner";
+import NgfFooter from "@/components/brand/NgfFooter";
 import { getRestaurant } from "@/lib/site/data";
 import { restaurantUrl, siteBase } from "@/lib/site/safe";
 
@@ -32,6 +33,7 @@ export default async function Layout({ children, params }: P & { children: React
   return (
     <ThemeProvider primary={r.primary_color} secondary={r.secondary_color}>
       {children}
+      <NgfFooter />
       <SiteNav slug={slug} canOrder={canOrder} />
     </ThemeProvider>
   );

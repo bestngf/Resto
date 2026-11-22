@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { OfflineSync } from "@/components/aide/OfflineSync";
 import { APP_NAME } from "@/lib/aide/config";
+import NgfBar from "@/components/brand/NgfBar";
 
 export const metadata: Metadata = {
   title: { default: `Centre d'aide ${APP_NAME}`, template: `%s | Aide ${APP_NAME}` },
@@ -13,6 +14,7 @@ export default function AideLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-dvh bg-stone-50 text-stone-900">
       <OfflineSync />
+      <NgfBar />
       <header className="border-b border-stone-200 bg-white">
         <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-3">
           <Link href="/aide" className="text-lg font-semibold text-emerald-900">

@@ -55,7 +55,7 @@ export default function Connexion() {
           <label className="block text-sm font-medium">Ton adresse e-mail
             <input type="email" inputMode="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} className="mt-1 min-h-12 w-full rounded-xl border border-[var(--r-line)] bg-white px-4 text-base" />
           </label>
-          {error && <p role="alert" className="rounded-xl bg-[#fde4e1] p-3 text-sm">{error}</p>}
+          {error && <p role="alert" className="rounded-xl bg-red-50 p-3 text-sm">{error}</p>}
           <button type="submit" disabled={busy} className="min-h-12 w-full rounded-xl bg-[var(--r-brand)] font-semibold text-[var(--r-brand-ink)] disabled:opacity-60">{busy ? "Envoi…" : "Recevoir mon lien"}</button>
         </form>
       )}

@@ -11,6 +11,7 @@ Aucune variable d'environnement à régler sur Netlify : l'adresse et la clé PU
 
 ## Ce qui est dedans
 Espace client (agent 2), dashboard restaurateur (3), équipe (4), site du restaurant `/r/<slug>` (5), centre d'aide `/aide` (6), commande sans compte + paiement + suivi `/suivi/<code>` (7), PWA simple (installation, page hors connexion).
+Identité visuelle NGF (couleurs, icônes, écran de lancement) : `docs/IDENTITE.md`.
 Détails : `docs/agents/`, `docs/BASE.md`, `docs/API.md`, `docs/ETAT.md`, `docs/DEMANDES.md`.
 
 ## Vérifier ici sans réseau

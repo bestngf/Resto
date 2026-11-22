@@ -1,0 +1,88 @@
+/* Identité NGF (New Generation Form) : noir et or brillant, dégradé néon, une couleur par domaine (Resto = orange), motif africain.
+   Les couleurs suivent le téléphone (clair ou sombre). Une zone peut forcer le clair avec la classe « ngf-light » (sites des restaurants). */
+:root, .ngf-light {
+  --bg: 245 243 238; --c-white: 255 255 255; --on-brand: 255 255 255;
+  --c-s50: 248 246 241; --c-s100: 240 237 229; --c-s200: 225 221 209; --c-s300: 207 202 188; --c-s400: 168 162 158;
+  --c-s500: 107 105 98; --c-s600: 91 90 99; --c-s700: 67 66 74; --c-s800: 43 42 49; --c-s900: 20 20 26;
+  --g50: 251 243 220; --g100: 245 230 179; --g200: 236 212 140; --gtext: 138 101 8; --gtext2: 100 72 4;
+  --a50: 255 241 230; --a100: 255 226 204; --atext: 124 45 18;
+  --r50: 253 236 238; --r100: 250 212 217; --rtext: 140 18 36;
+  --ok-bg: 217 242 229; --ok-text: 11 90 61;
+  --ngf-gold: #E8C45A; --ngf-red: #EF2B3A; --ink: #08080B;
+  --foil: linear-gradient(135deg,#FFF1B8 0%,#E8C45A 28%,#B8860B 58%,#F6DE8D 82%,#C99A2E 100%);
+  --neon: linear-gradient(100deg,#1F5BFF 0%,#6D28D9 22%,#9333EA 48%,#EF2B3A 78%,#E0B54A 100%);
+  --d-resto: #FB7A3C;
+  --pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cpath d='M0 32 16 16l16 16 16-16 16 16M0 64 16 48l16 16 16-16 16 16' fill='none' stroke='%23E0B54A' stroke-width='2.6' stroke-linejoin='round'/%3E%3Cpath d='M32 4 40 12 32 20 24 12Z' fill='%23E0B54A'/%3E%3Cpath d='M32 8 36 12 32 16 28 12Z' fill='%2308080B'/%3E%3Ccircle cx='8' cy='8' r='2.6' fill='%23EF2B3A'/%3E%3Ccircle cx='56' cy='8' r='2.6' fill='%23EF2B3A'/%3E%3C/svg%3E");
+  --pattern-op: .30;
+  --font-display: "Nunito", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* variables de l'espace client */
+  --r-ink: rgb(var(--c-s900)); --r-muted: rgb(var(--c-s600)); --r-paper: rgb(var(--bg)); --r-card: rgb(var(--c-white));
+  --r-line: rgb(var(--c-s200)); --r-brand: rgb(var(--gtext)); --r-brand-ink: rgb(var(--on-brand)); --r-sun: #E8C45A;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: 8 8 11; --c-white: 18 18 24; --on-brand: 8 8 11;
+    --c-s50: 22 22 29; --c-s100: 27 27 36; --c-s200: 47 42 28; --c-s300: 62 56 38; --c-s400: 110 109 120;
+    --c-s500: 154 153 164; --c-s600: 163 162 173; --c-s700: 201 200 208; --c-s800: 228 226 218; --c-s900: 245 243 238;
+    --g50: 42 36 16; --g100: 58 49 20; --g200: 90 74 28; --gtext: 232 196 90; --gtext2: 245 220 140;
+    --a50: 43 26 16; --a100: 58 36 20; --atext: 255 200 160;
+    --r50: 42 18 22; --r100: 58 26 32; --rtext: 255 180 189;
+    --ok-bg: 14 42 30; --ok-text: 110 231 183;
+    --pattern-op: .22; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: 8 8 11; --c-white: 18 18 24; --on-brand: 8 8 11;
+  --c-s50: 22 22 29; --c-s100: 27 27 36; --c-s200: 47 42 28; --c-s300: 62 56 38; --c-s400: 110 109 120;
+  --c-s500: 154 153 164; --c-s600: 163 162 173; --c-s700: 201 200 208; --c-s800: 228 226 218; --c-s900: 245 243 238;
+  --g50: 42 36 16; --g100: 58 49 20; --g200: 90 74 28; --gtext: 232 196 90; --gtext2: 245 220 140;
+  --a50: 43 26 16; --a100: 58 36 20; --atext: 255 200 160;
+  --r50: 42 18 22; --r100: 58 26 32; --rtext: 255 180 189;
+  --ok-bg: 14 42 30; --ok-text: 110 231 183;
+  --pattern-op: .22; color-scheme: dark;
+}
+
+body { background: rgb(var(--bg)); color: rgb(var(--c-s900)); font-family: var(--font-body); }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; }
+:focus-visible { outline: 3px solid #E8C45A; outline-offset: 2px; }
+
+/* Les anciennes teintes vertes de Resto deviennent l'or NGF ; ambre = orange, rouge = rouge NGF. */
+.bg-emerald-50 { background-color: rgb(var(--g50)); } .bg-emerald-100 { background-color: rgb(var(--g100)); }
+.bg-emerald-300 { background-color: #E8C45A; }
+.border-emerald-200 { border-color: rgb(var(--g200)); }
+.border-emerald-600, .border-emerald-700, .border-emerald-800 { border-color: rgb(var(--gtext)); }
+.text-emerald-700, .text-emerald-800 { color: rgb(var(--gtext)); }
+.text-emerald-900, .text-emerald-950 { color: rgb(var(--gtext2)); }
+.bg-amber-50 { background-color: rgb(var(--a50)); } .bg-amber-100 { background-color: rgb(var(--a100)); }
+.text-amber-900, .text-amber-950 { color: rgb(var(--atext)); }
+.bg-red-50 { background-color: rgb(var(--r50)); } .bg-red-100 { background-color: rgb(var(--r100)); }
+.text-red-700, .text-red-800, .text-red-900 { color: rgb(var(--rtext)); }
+.ngf-ok { background-color: rgb(var(--ok-bg)); } .ngf-ok-text { color: rgb(var(--ok-text)); }
+
+/* Bouton principal : or brillant, texte noir. */
+.bg-emerald-700.text-white, .bg-emerald-800.text-white, .bg-emerald-900.text-white {
+  background-image: var(--foil); background-color: #E8C45A; color: var(--ink); box-shadow: 0 4px 16px rgba(184,134,11,.30);
+}
+.bg-neutral-900 { box-shadow: inset 0 0 0 2px #E8C45A; }
+
+/* Cartes à cadre doré */
+.ngf-card { background: linear-gradient(rgb(var(--c-white)), rgb(var(--c-white))) padding-box, var(--foil) border-box !important; border: 2px solid transparent !important; border-radius: 1.5rem; }
+
+/* Bandeau kente et barre de marque */
+.ngf-kente { height: 8px; background: repeating-linear-gradient(90deg,#E8C45A 0 26px,#EF2B3A 26px 38px,#08080B 38px 42px,#2F6BFF 42px 56px,#E8C45A 56px 60px,#9333EA 60px 74px,#08080B 74px 78px); }
+.ngf-bar { position: relative; background: #0B0B10; color: #F5F3EE; isolation: isolate; }
+.ngf-bar::before { content: ""; position: absolute; inset: 0; background: var(--pattern); background-size: 40px; opacity: .22; z-index: -1; }
+.ngf-bar-in { display: flex; align-items: center; gap: 10px; max-width: 64rem; margin: 0 auto; padding: 6px 16px; }
+.ngf-word { font: 900 1.25rem/1 var(--font-display); background: var(--neon); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: .02em; }
+.ngf-sub { font-size: .72rem; line-height: 1.15; color: #B8B6C0; }
+.ngf-sub b { display: block; font: 800 .85rem/1.1 var(--font-display); color: #F5F3EE; }
+.ngf-foot { text-align: center; padding: 18px 16px calc(96px + env(safe-area-inset-bottom)); color: rgb(var(--c-s600)); font-size: .8rem; }
+.ngf-foot .ngf-word { font-size: 1rem; }
+
+/* États vides : coin décoré du motif africain */
+.ngf-empty { position: relative; overflow: hidden; }
+.ngf-empty::after { content: ""; position: absolute; right: -26px; top: -26px; width: 150px; height: 150px; background: var(--pattern); opacity: var(--pattern-op); transform: rotate(12deg); pointer-events: none;
+  -webkit-mask-image: radial-gradient(circle at 70% 30%, #000 30%, transparent 72%); mask-image: radial-gradient(circle at 70% 30%, #000 30%, transparent 72%); }
+.ngf-empty > * { position: relative; }

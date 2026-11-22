@@ -5,6 +5,7 @@ import HelpButton from "@/components/ui/HelpButton";
 import Skeleton from "@/components/ui/Skeleton";
 import RestaurantList from "@/components/restaurants/RestaurantList";
 import { useRestaurants } from "@/lib/useRestaurants";
+import Link from "next/link";
 import { APP_NAME } from "@/config/app";
 
 export default function Accueil() {
@@ -19,7 +20,7 @@ export default function Accueil() {
         Cherche un restaurant, puis ajoute tes plats au panier. Tu peux commander sur place, à emporter ou te faire livrer.
       </HelpBubble>
       {fromCache && (
-        <p role="status" className="mb-3 rounded-xl bg-[#fff4cc] p-3 text-sm">Pas de connexion : voici la dernière liste enregistrée.
+        <p role="status" className="mb-3 rounded-xl bg-amber-50 p-3 text-sm">Pas de connexion : voici la dernière liste enregistrée.
           <button type="button" onClick={reload} className="ml-2 font-semibold underline">Réessayer</button>
         </p>
       )}
@@ -42,6 +43,15 @@ export default function Accueil() {
         </div>
       )}
       {restaurants && restaurants.length > 0 && <RestaurantList restaurants={restaurants} />}
+      <section aria-labelledby="espace-pro" className="ngf-card ngf-empty mt-8 bg-white p-5">
+        <h2 id="espace-pro" className="text-lg font-extrabold">Tu travailles dans la restauration ?</h2>
+        <p className="mt-1 text-sm text-[var(--r-muted)]">Inscris ton restaurant, reçois les commandes et les réservations, gère ton équipe et tes livreurs.</p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          <Link href="/dashboard" className="inline-flex min-h-12 items-center rounded-full bg-emerald-700 px-5 text-sm font-extrabold text-white">J&apos;ai un restaurant</Link>
+          <Link href="/livreur" className="inline-flex min-h-12 items-center rounded-full border-2 border-[var(--r-brand)] px-5 text-sm font-extrabold text-[var(--r-brand)]">Je suis livreur</Link>
+          <Link href="/rejoindre" className="inline-flex min-h-12 items-center rounded-full bg-stone-200 px-5 text-sm font-extrabold text-stone-900">J&apos;ai un lien d&apos;équipe</Link>
+        </div>
+      </section>
     </ClientShell>
   );
 }

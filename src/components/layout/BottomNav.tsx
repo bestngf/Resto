@@ -6,6 +6,7 @@ import { useCarts, cartCount } from "@/lib/cart/cart";
 const items = [
   { href: "/commande", label: "Commander", d: "M3 4h2l2 12h11l2-8H6M9 20a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z" },
   { href: "/reserver", label: "Réserver", d: "M7 3v3m10-3v3M4 8h16M5 5h14a1 1 0 011 1v13a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1z" },
+  { href: "/dashboard", label: "Espace pro", d: "M4 9l1-5h14l1 5M4 9v11h16V9M4 9a4 4 0 008 0 4 4 0 008 0M10 20v-5h4v5" },
   { href: "/carte", label: "Trouver", d: "M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11zm0-8.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" },
 ];
 

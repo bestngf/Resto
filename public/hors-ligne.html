@@ -1,3 +1,12 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hors connexion</title>
-<style>body{font-family:system-ui,sans-serif;margin:0;display:grid;place-items:center;min-height:100vh;padding:24px;text-align:center;color:#1a1a1a}button{min-height:48px;padding:0 24px;border:0;border-radius:12px;background:#e8590c;color:#fff;font-size:16px;font-weight:600}</style></head>
-<body><main><h1>Pas de connexion</h1><p>Vérifie ton réseau, puis réessaie. Les pages déjà visitées restent disponibles.</p><button onclick="location.reload()">Réessayer</button></main></body></html>
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#08080B"><title>Hors connexion</title>
+<style>
+:root{color-scheme:light dark;--bg:#F5F3EE;--fg:#14141A;--muted:#5B5A63;--gold:#8A6508}
+@media (prefers-color-scheme:dark){:root{--bg:#08080B;--fg:#F5F3EE;--muted:#A3A2AD;--gold:#E8C45A}}
+body{font-family:"Trebuchet MS",system-ui,sans-serif;margin:0;display:grid;place-items:center;min-height:100vh;padding:24px;text-align:center;background:var(--bg);color:var(--fg)}
+.k{position:fixed;left:0;right:0;top:0;height:10px;background:repeating-linear-gradient(90deg,#E8C45A 0 26px,#EF2B3A 26px 38px,#08080B 38px 42px,#2F6BFF 42px 56px,#E8C45A 56px 60px,#9333EA 60px 74px,#08080B 74px 78px)}
+.w{font:900 4rem/1 "Trebuchet MS",system-ui,sans-serif;background:linear-gradient(100deg,#1F5BFF 0%,#6D28D9 22%,#9333EA 48%,#EF2B3A 78%,#E0B54A 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+h1{margin:12px 0 6px}p{color:var(--muted);max-width:30ch;margin:0 auto 20px}
+button{min-height:50px;padding:0 28px;border:3px solid transparent;border-radius:999px;background:linear-gradient(135deg,#FFF1B8,#E8C45A 28%,#B8860B 58%,#F6DE8D 82%,#C99A2E);color:#08080B;font-size:16px;font-weight:800;cursor:pointer}
+button:focus-visible{outline:3px solid #E8C45A;outline-offset:3px}
+</style></head>
+<body><div class="k"></div><main><div class="w" aria-hidden="true">NGF</div><h1>Pas de connexion</h1><p>Vérifie ton réseau, puis réessaie. Les pages déjà visitées restent disponibles.</p><button onclick="location.reload()">Réessayer</button></main></body></html>

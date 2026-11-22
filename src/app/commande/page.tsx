@@ -41,7 +41,7 @@ export default function Commander() {
         <HelpButton topic="client-commander" />
       </header>
       <HelpBubble id="client-panier" title="Ton panier">Ajuste les quantités, choisis comment tu veux être servi, puis envoie ta commande.</HelpBubble>
-      {table && <p className="mb-4 rounded-xl bg-[#d9f2e5] p-3 text-sm font-medium">Tu es à la table {table.label}.</p>}
+      {table && <p className="mb-4 rounded-xl ngf-ok p-3 text-sm font-medium">Tu es à la table {table.label}.</p>}
       {list.length === 0 ? (
         <div className="rounded-2xl border border-dashed border-[var(--r-line)] bg-white p-6 text-center">
           <p className="font-semibold">Ton panier est vide</p>

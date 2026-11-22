@@ -107,10 +107,10 @@ export default function FicheRestaurant() {
             <p className="text-sm text-[var(--r-muted)]">{[r.cuisine, r.address].filter(Boolean).join(" – ")}</p>
             {r.landmark && <p className="text-sm text-[var(--r-muted)]">{r.landmark}</p>}
           </div>
-          {open !== null && <span className={`shrink-0 rounded-full px-2 py-1 text-xs font-semibold ${open ? "bg-[#d9f2e5] text-[#0b5a3d]" : "bg-[#eceeed] text-[var(--r-muted)]"}`}>{open ? "Ouvert" : "Fermé"}</span>}
+          {open !== null && <span className={`shrink-0 rounded-full px-2 py-1 text-xs font-semibold ${open ? "ngf-ok ngf-ok-text" : "bg-stone-200 text-[var(--r-muted)]"}`}>{open ? "Ouvert" : "Fermé"}</span>}
         </div>
 
-        {offline && <p role="status" className="mt-3 rounded-xl bg-[#fff4cc] p-3 text-sm">Pas de connexion : voici le dernier menu enregistré.<button type="button" onClick={load} className="ml-2 font-semibold underline">Réessayer</button></p>}
+        {offline && <p role="status" className="mt-3 rounded-xl bg-amber-50 p-3 text-sm">Pas de connexion : voici le dernier menu enregistré.<button type="button" onClick={load} className="ml-2 font-semibold underline">Réessayer</button></p>}
 
         <div className="mt-3 flex flex-wrap gap-2">
           {r.latitude != null && r.longitude != null && <a href={directionsUrl(r.latitude, r.longitude)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center rounded-xl bg-[var(--r-brand)] px-4 text-sm font-semibold text-[var(--r-brand-ink)]">Y aller</a>}

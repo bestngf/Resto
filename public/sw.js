@@ -1,6 +1,6 @@
 // Service worker simple (sans dépendance) : fichiers statiques en cache, pages réseau d'abord, page hors connexion de secours.
-const VERSION = "resto-v1";
-const SHELL = ["/hors-ligne.html", "/manifest.webmanifest", "/icons/icon-192.png"];
+const VERSION = "resto-v2";
+const SHELL = ["/hors-ligne.html", "/manifest.webmanifest", "/icons/icon-192.png", "/ngf-splash.js"];
 self.addEventListener("install", (e) => { e.waitUntil(caches.open(VERSION).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", (e) => { e.waitUntil(caches.keys().then((k) => Promise.all(k.filter((x) => x !== VERSION).map((x) => caches.delete(x)))).then(() => self.clients.claim())); });
 self.addEventListener("fetch", (e) => {

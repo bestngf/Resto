@@ -84,7 +84,7 @@ export default function Livreur() {
 
   if (isCourier === false) return (
     <main className="mx-auto max-w-xl p-4"><h1 className="text-2xl font-bold">Espace livreur</h1>
-      <p className="mt-3 rounded-xl bg-[#fff4cc] p-3">Ton compte n&apos;est pas livreur d&apos;un restaurant. Demande au gérant de t&apos;envoyer son lien d&apos;invitation, puis ouvre-le.</p>
+      <p className="mt-3 rounded-xl bg-amber-50 p-3">Ton compte n&apos;est pas livreur d&apos;un restaurant. Demande au gérant de t&apos;envoyer son lien d&apos;invitation, puis ouvre-le.</p>
       <Link href="/rejoindre" className="mt-3 inline-flex min-h-12 items-center rounded-xl bg-neutral-900 px-5 font-semibold text-white">Rejoindre une équipe</Link></main>);
   if (isCourier === null) return <main className="mx-auto max-w-xl p-4"><p aria-busy="true">{err || "Chargement…"}</p></main>;
 
@@ -102,12 +102,12 @@ export default function Livreur() {
         <div className="rounded-2xl bg-neutral-900 p-4 text-white">
           <p className="font-semibold">Démarre ton service pour être alerté</p>
           <p className="mt-1 text-sm text-neutral-300">Son, vibration, notification et distance. Garde l&apos;application ouverte et l&apos;écran allumé.</p>
-          <button type="button" onClick={startDuty} className={`${btn} mt-3 w-full bg-white text-neutral-900`}>Démarrer mon service</button>
+          <button type="button" onClick={startDuty} className={`${btn} mt-3 w-full bg-[#F5F3EE] text-neutral-900`}>Démarrer mon service</button>
         </div>
       ) : (
-        <p role="status" className="rounded-xl bg-[#e3f6e8] p-3 text-sm font-medium">Service en cours : tu seras alerté pour chaque nouvelle livraison.{notif === "refuse" && " (Notifications bloquées dans le navigateur : seul le son est actif.)"}{pos ? "" : " Position en attente…"}</p>
+        <p role="status" className="rounded-xl ngf-ok p-3 text-sm font-medium">Service en cours : tu seras alerté pour chaque nouvelle livraison.{notif === "refuse" && " (Notifications bloquées dans le navigateur : seul le son est actif.)"}{pos ? "" : " Position en attente…"}</p>
       )}
-      {err && <p role="alert" className="rounded-xl bg-[#fde4e1] p-3 text-sm">{err}</p>}
+      {err && <p role="alert" className="rounded-xl bg-red-50 p-3 text-sm">{err}</p>}
 
       <section aria-label="Livraisons en cours" className="space-y-3">
         <h2 className="font-bold">En cours ({mine.length})</h2>

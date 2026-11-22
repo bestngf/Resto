@@ -1,8 +1,9 @@
 import type { ReactNode } from "react";
 import "@/components/team/team.css";
+import NgfBar from "@/components/brand/NgfBar";
 
 export const metadata = { title: "Rejoindre l'équipe · Resto", robots: { index: false, follow: false } };
 
 export default function Layout({ children }: { children: ReactNode }) {
-  return <div className="team-root min-h-screen bg-stone-100 text-stone-900">{children}</div>;
+  return <div className="team-root min-h-screen bg-stone-100 text-stone-900"><NgfBar />{children}</div>;
 }

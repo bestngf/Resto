@@ -1,12 +1,12 @@
 "use client";
 import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 
-export const btn = "inline-flex items-center justify-center gap-2 rounded-xl px-4 min-h-11 text-sm font-semibold transition active:scale-[.98] disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700";
+export const btn = "inline-flex items-center justify-center gap-2 rounded-full px-5 min-h-11 text-sm font-extrabold transition active:scale-[.98] disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700";
 export const btnPrimary = `${btn} bg-emerald-700 text-white hover:bg-emerald-800`;
 export const btnGhost = `${btn} bg-white text-stone-800 border border-stone-300 hover:bg-stone-50`;
 export const btnDanger = `${btn} bg-red-700 text-white hover:bg-red-800`;
 export const inputCls = "w-full min-h-11 rounded-xl border border-stone-300 bg-white px-3 text-base text-stone-900 placeholder:text-stone-500 focus:border-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200";
-export const cardCls = "rounded-2xl border border-stone-200 bg-white p-4 shadow-sm";
+export const cardCls = "ngf-card p-4 shadow-sm";
 
 export function PageHeader({ title, subtitle, right }: { title: string; subtitle?: string; right?: ReactNode }) {
   return (
@@ -43,7 +43,7 @@ export function HelpBubble({ id, title, children }: { id: string; title: string;
 
 export function EmptyState({ icon, title, text, action }: { icon: string; title: string; text: string; action?: ReactNode }) {
   return (
-    <div className="fade-in rounded-2xl border border-dashed border-stone-300 bg-white p-8 text-center">
+    <div className="fade-in ngf-empty ngf-card p-8 text-center">
       <div className="text-4xl" aria-hidden>{icon}</div>
       <h2 className="mt-2 text-lg font-semibold text-stone-900">{title}</h2>
       <p className="mx-auto mt-1 max-w-sm text-sm text-stone-600">{text}</p>

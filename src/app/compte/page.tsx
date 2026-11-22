@@ -101,8 +101,8 @@ export default function Compte() {
         <HelpButton topic="client-compte" />
       </header>
       <HelpBubble id="client-compte" title="Tes commandes au même endroit">Retrouve tes commandes, refais-en une en un geste et garde tes restaurants préférés.</HelpBubble>
-      {error && <div role="alert" className="mb-4 rounded-2xl bg-[#fde4e1] p-4 text-sm">{error} <button type="button" className="font-semibold underline" onClick={() => load(user.id)}>Réessayer</button></div>}
-      {msg && <p role="status" className="mb-4 rounded-xl bg-[#d9f2e5] p-3 text-sm font-medium">{msg}</p>}
+      {error && <div role="alert" className="mb-4 rounded-2xl bg-red-50 p-4 text-sm">{error} <button type="button" className="font-semibold underline" onClick={() => load(user.id)}>Réessayer</button></div>}
+      {msg && <p role="status" className="mb-4 rounded-xl ngf-ok p-3 text-sm font-medium">{msg}</p>}
 
       <section className="mb-6 rounded-2xl border border-[var(--r-line)] bg-white p-4">
         <h2 className="text-lg font-semibold">{profile ? "Mon profil" : "Termine ton profil"}</h2>

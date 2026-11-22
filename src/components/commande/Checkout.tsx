@@ -115,7 +115,7 @@ export default function Checkout({ cart, table }: { cart: Cart; table: TableInfo
 
   if (modes.length === 0) {
     return (
-      <div className="mt-4 rounded-xl bg-[#fff4cc] p-3 text-sm">
+      <div className="mt-4 rounded-xl bg-amber-50 p-3 text-sm">
         Aucun mode de commande n&apos;est disponible. Pour commander sur place, scanne le QR code de ta table.
         {wa && <a href={wa} target="_blank" rel="noopener noreferrer" className="mt-2 block font-semibold underline">Écrire au restaurant sur WhatsApp</a>}
       </div>
@@ -188,7 +188,7 @@ export default function Checkout({ cart, table }: { cart: Cart; table: TableInfo
         <div className="flex justify-between text-base font-bold"><dt>Total</dt><dd>{formatFcfa(subtotal + fee)}</dd></div>
       </dl>
 
-      {error && <p role="alert" className="rounded-xl bg-[#fde4e1] p-3 text-sm">{error}</p>}
+      {error && <p role="alert" className="rounded-xl bg-red-50 p-3 text-sm">{error}</p>}
 
       <button type="button" disabled={busy || !current} onClick={submit} className="min-h-12 w-full rounded-xl bg-[var(--r-brand)] px-4 font-semibold text-[var(--r-brand-ink)] disabled:opacity-60">{busy ? "Envoi en cours…" : method === "mobile_money" ? "Commander et payer" : "Envoyer ma commande"}</button>
       {!user && <p className="text-center text-sm text-[var(--r-muted)]">Pas besoin de compte. <Link href="/connexion?next=/commande" className="underline">Se connecter</Link> pour retrouver tes commandes.</p>}

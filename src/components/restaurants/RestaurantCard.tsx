@@ -18,7 +18,7 @@ export default function RestaurantCard({ r }: { r: Restaurant }) {
           {modes && <p className="mt-1 text-xs text-[var(--r-muted)]">{modes}</p>}
         </div>
         {open !== null && (
-          <span className={`shrink-0 rounded-full px-2 py-1 text-xs font-semibold ${open ? "bg-[#d9f2e5] text-[#0b5a3d]" : "bg-[#eceeed] text-[var(--r-muted)]"}`}>
+          <span className={`shrink-0 rounded-full px-2 py-1 text-xs font-semibold ${open ? "ngf-ok ngf-ok-text" : "bg-stone-200 text-[var(--r-muted)]"}`}>
             {open ? "Ouvert" : "Fermé"}
           </span>
         )}

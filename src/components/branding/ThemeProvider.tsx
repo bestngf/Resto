@@ -20,7 +20,7 @@ export default function ThemeProvider({ primary, secondary, children }: { primar
     "--brand-soft": `color-mix(in srgb, ${brand} 10%, white)`,
   } as CSSProperties;
   return (
-    <div style={vars} className="min-h-screen bg-white pb-24 text-[#111] antialiased">
+    <div style={vars} className="ngf-light min-h-screen bg-white pb-24 text-[#111] antialiased">
       <style>{css}</style>
       {children}
     </div>

@@ -15,7 +15,7 @@ export default function ReviewForm({ orderId, restaurantId, userId }: { orderId:
   }, [orderId, userId]);
 
   if (done === null) return null;
-  if (done) return <p className="mt-4 rounded-2xl bg-[#d9f2e5] p-4 text-sm font-medium">Merci pour ton avis !</p>;
+  if (done) return <p className="mt-4 rounded-2xl ngf-ok p-4 text-sm font-medium">Merci pour ton avis !</p>;
 
   async function send() {
     if (rating < 1) { setError("Choisis une note de 1 à 5."); return; }

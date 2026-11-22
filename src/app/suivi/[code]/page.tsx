@@ -38,8 +38,8 @@ export default function SuiviCommande() {
       <h1 className="text-2xl font-bold">{o.restaurant.name}</h1>
       <p className="text-sm text-neutral-600">Ta commande · {formatFcfa(o.total)}</p>
 
-      {back && !paid && o.payment_method === "mobile_money" && !canceled && <p role="status" className="rounded-xl bg-[#fff4cc] p-3 text-sm">Nous vérifions ton paiement. Cela peut prendre une minute…</p>}
-      {paid && <p role="status" className="rounded-xl bg-[#e3f6e8] p-3 text-sm font-medium">Paiement reçu. Merci !</p>}
+      {back && !paid && o.payment_method === "mobile_money" && !canceled && <p role="status" className="rounded-xl bg-amber-50 p-3 text-sm">Nous vérifions ton paiement. Cela peut prendre une minute…</p>}
+      {paid && <p role="status" className="rounded-xl ngf-ok p-3 text-sm font-medium">Paiement reçu. Merci !</p>}
       {!paid && !canceled && o.payment_method === "mobile_money" && o.can_retry && (
         <div className="rounded-xl border border-neutral-300 p-3">
           <p className="text-sm">Le paiement n&apos;est pas encore confirmé. Tu peux le reprendre sans risque : une commande payée ne peut pas être payée deux fois.</p>
@@ -48,7 +48,7 @@ export default function SuiviCommande() {
       )}
       {!paid && o.payment_method === "especes" && !canceled && <p className="rounded-xl bg-neutral-100 p-3 text-sm">Paiement en espèces au restaurant ou à la livraison.</p>}
 
-      {canceled ? <p role="status" className="rounded-xl bg-[#fde4e1] p-3 font-medium">Commande annulée.</p> : (
+      {canceled ? <p role="status" className="rounded-xl bg-red-50 p-3 font-medium">Commande annulée.</p> : (
         <ol className="space-y-2" aria-label="Étapes de la commande">
           {steps.map((s, i) => (
             <li key={s.key} aria-current={i === idx ? "step" : undefined} className={`flex items-center gap-3 rounded-xl border p-3 ${i <= idx ? "border-neutral-900 font-semibold" : "border-neutral-200 text-neutral-500"}`}>
@@ -63,7 +63,7 @@ export default function SuiviCommande() {
         {o.delivery_fee > 0 && <li className="flex justify-between p-3"><span>Livraison</span><span>{formatFcfa(o.delivery_fee)}</span></li>}
       </ul>
 
-      {err && <p role="alert" className="rounded-xl bg-[#fde4e1] p-3 text-sm">{err}</p>}
+      {err && <p role="alert" className="rounded-xl bg-red-50 p-3 text-sm">{err}</p>}
       <div className="flex flex-wrap gap-2">
         {o.whatsapp_link && <a href={o.whatsapp_link} target="_blank" rel="noopener noreferrer" className="min-h-12 flex-1 rounded-xl border-2 border-neutral-900 px-4 py-3 text-center font-semibold">Écrire au restaurant sur WhatsApp</a>}
         {o.restaurant.phone && <a href={`tel:${o.restaurant.phone.replace(/[^\d+]/g, "")}`} className="min-h-12 rounded-xl border border-neutral-300 px-4 py-3 text-center">Appeler</a>}

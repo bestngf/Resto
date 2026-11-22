@@ -1,5 +1,6 @@
 "use client";
 import TeamAlert from "@/components/team/TeamAlert";
+import NgfBar from "@/components/brand/NgfBar";
 import { ReactNode, useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -62,6 +63,7 @@ export function Shell({ children }: { children: ReactNode }) {
     <div className="min-h-screen bg-stone-100 text-stone-900">
       <TeamAlert />
       <header className="sticky top-0 z-30 border-b border-stone-200 bg-white">
+        <NgfBar />
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-2">
           <div className="min-w-0">
             {memberships.length > 1 ? (

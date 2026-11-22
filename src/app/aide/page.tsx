@@ -101,7 +101,7 @@ export default async function AidePage() {
 
       <section className="rounded-xl bg-emerald-900 p-5 text-white">
         <h2 className="text-lg font-semibold">Vous ne trouvez pas votre réponse ?</h2>
-        <p className="mt-1 text-emerald-50">Écrivez-nous, une vraie personne vous répond.</p>
+        <p className="mt-1 opacity-90">Écrivez-nous, une vraie personne vous répond.</p>
         <div className="mt-3 flex flex-wrap gap-2">
           {wa && hasWhatsApp && (
             <a

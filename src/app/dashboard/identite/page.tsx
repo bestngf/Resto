@@ -13,14 +13,14 @@ const CURRENCIES = ["FCFA", "GHS", "NGN", "EUR", "USD"];
 export default function IdentitePage() {
   const { restaurant: r, reload } = useRestaurant();
   const toast = useToast();
-  const [f, setF] = useState({ name: "", cuisine: "", phone: "", whatsapp: "", address: "", landmark: "", currency: "FCFA", primary: "#047857", secondary: "#f59e0b", logo: "", cover: "", dine: true, take: true, deliv: false });
+  const [f, setF] = useState({ name: "", cuisine: "", phone: "", whatsapp: "", address: "", landmark: "", currency: "FCFA", primary: "#c2410c", secondary: "#f59e0b", logo: "", cover: "", dine: true, take: true, deliv: false });
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
     if (!r) return;
     setF({
       name: r.name, cuisine: r.cuisine ?? "", phone: r.phone ?? "", whatsapp: r.whatsapp ?? "", address: r.address ?? "", landmark: r.landmark ?? "",
-      currency: r.currency || "FCFA", primary: r.primary_color ?? "#047857", secondary: r.secondary_color ?? "#f59e0b",
+      currency: r.currency || "FCFA", primary: r.primary_color ?? "#c2410c", secondary: r.secondary_color ?? "#f59e0b",
       logo: r.logo_url ?? "", cover: r.cover_url ?? "", dine: r.accepts_dine_in, take: r.accepts_takeaway, deliv: r.accepts_delivery,
     });
   }, [r]);

@@ -71,7 +71,7 @@ export default function Suivi() {
       <p className="mb-4 text-[var(--r-muted)]">{order.resto_restaurants?.name}</p>
 
       {cancelled ? (
-        <p role="status" className="rounded-2xl bg-[#fde4e1] p-4 font-semibold">Cette commande a été annulée.</p>
+        <p role="status" className="rounded-2xl bg-red-50 p-4 font-semibold">Cette commande a été annulée.</p>
       ) : (
         <ol className="space-y-3" aria-label="Étapes de la commande">
           {steps.map((s, i) => {

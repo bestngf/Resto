@@ -1,7 +1,7 @@
 // Graphiques SVG maison, très légers (aucune bibliothèque).
 export interface Bar { label: string; value: number }
 
-export function VerticalBars({ data, title, format = (n: number) => String(n), color = "#047857" }: {
+export function VerticalBars({ data, title, format = (n: number) => String(n), color = "#E0B54A" }: {
   data: Bar[]; title: string; format?: (n: number) => string; color?: string;
 }) {
   const max = Math.max(1, ...data.map((d) => d.value));
@@ -18,11 +18,11 @@ export function VerticalBars({ data, title, format = (n: number) => String(n), c
               <rect x={pad + i * bw + 1} y={H - h} width={Math.max(2, bw - 2)} height={h} rx={2} fill={color}>
                 <title>{`${d.label} : ${format(d.value)}`}</title>
               </rect>
-              {i % step === 0 && <text x={pad + i * bw + bw / 2} y={H + 14} textAnchor="middle" fontSize="9" fill="#57534e">{d.label}</text>}
+              {i % step === 0 && <text x={pad + i * bw + bw / 2} y={H + 14} textAnchor="middle" fontSize="9" style={{ fill: "rgb(var(--c-s600))" }}>{d.label}</text>}
             </g>
           );
         })}
-        <line x1={pad} x2={W - pad} y1={H} y2={H} stroke="#a8a29e" />
+        <line x1={pad} x2={W - pad} y1={H} y2={H} style={{ stroke: "rgb(var(--c-s400))" }} />
       </svg>
       <figcaption className="sr-only">{data.map((d) => `${d.label} : ${format(d.value)}`).join(", ")}</figcaption>
     </figure>
