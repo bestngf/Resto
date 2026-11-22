@@ -1,0 +1,18 @@
+/* Animations douces du dashboard. Désactivées si le téléphone demande de réduire les animations. */
+@keyframes resto-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes resto-ring { 0%,100% { box-shadow: 0 0 0 0 rgba(185,28,28,.45); } 50% { box-shadow: 0 0 0 10px rgba(185,28,28,0); } }
+.fade-in { animation: resto-fade .25s ease-out both; }
+.ring-pulse { animation: resto-ring 1.6s ease-in-out infinite; }
+.resto-pin { font-size: 28px; line-height: 1; filter: drop-shadow(0 1px 2px rgba(0,0,0,.4)); }
+@media (prefers-reduced-motion: reduce) {
+  .fade-in, .ring-pulse, .animate-pulse, .animate-spin { animation: none !important; }
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
+/* Impression des QR codes : seule la feuille de QR est imprimée. */
+.print-sheet { display: none; }
+@media print {
+  body * { visibility: hidden; }
+  .print-sheet, .print-sheet * { visibility: visible; }
+  .print-sheet { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; position: absolute; inset: 0; padding: 16px; }
+  .print-card { break-inside: avoid; border: 2px dashed #444; padding: 16px; text-align: center; }
+}

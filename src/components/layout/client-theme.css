@@ -1,0 +1,17 @@
+:root {
+  --r-ink: #14201a;
+  --r-muted: #55665d;
+  --r-paper: #f4f7f5;
+  --r-card: #ffffff;
+  --r-line: #dbe4df;
+  --r-brand: #0e6b4a;
+  --r-brand-ink: #ffffff;
+  --r-sun: #f4b400;
+}
+.r-client { color: var(--r-ink); background: var(--r-paper); min-height: 100dvh; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.r-client :focus-visible { outline: 3px solid var(--r-sun); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  .r-client *, .r-client *::before, .r-client *::after { animation: none !important; transition: none !important; }
+}
+@keyframes r-pop { from { transform: scale(.96); opacity: 0 } to { transform: scale(1); opacity: 1 } }
+.r-pop { animation: r-pop .22s ease-out; }
