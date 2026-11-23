@@ -8,7 +8,7 @@ const sb = () => createClient(SUPABASE_URL, SUPABASE_ANON_KEY, { auth: { persist
 
 export const getRestaurant = cache(async (slug: string): Promise<SiteRestaurant | null> => {
   if (!/^[a-z0-9-]{1,80}$/.test(slug)) return null;
-  const { data } = await sb().from("resto_restaurants").select("*").eq("slug", slug).maybeSingle();
+  const { data } = await sb().from("resto_restaurants").select("id,slug,name,cuisine,phone,whatsapp,address,landmark,latitude,longitude,logo_url,cover_url,primary_color,secondary_color,currency,status,accepts_dine_in,accepts_takeaway,accepts_delivery").eq("slug", slug).maybeSingle();
   return (data as SiteRestaurant) ?? null;
 });
 export const getHours = cache(async (id: string): Promise<SiteHour[]> => {
