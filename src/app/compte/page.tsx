@@ -91,7 +91,8 @@ export default function Compte() {
     router.push("/commande");
   }
 
-  if (!ready || (user && profile === undefined && !error)) return <ClientShell><div className="space-y-3" aria-busy="true"><Skeleton className="h-10" /><Skeleton className="h-40" /><Skeleton className="h-40" /></div></ClientShell>;
+  if (!ready || (user && profile === undefined && !error)) return <ClientShell><div className="space-y-3" aria-busy="true"><Skeleton className="h-10" /><Skeleton className="h-40" /><Skeleton className="h-40" /></div>      <div className="mt-4"><a href="/changer-code" className="block min-h-11 rounded-xl border border-[var(--r-line)] bg-white px-4 py-3 text-center text-sm font-semibold">Changer mon code</a></div>
+    </ClientShell>;
   if (!user) return null;
 
   return (
@@ -149,6 +150,7 @@ export default function Compte() {
         )}
       </section>
 
+      <a href="/changer-code" className="mb-3 block min-h-12 rounded-xl border border-[var(--r-line)] bg-white px-4 py-3 text-center text-sm font-semibold">Changer mon code</a>
       <button type="button" onClick={async () => { await getSupabase().auth.signOut(); router.replace("/"); }} className="min-h-12 w-full rounded-xl border border-[var(--r-line)] bg-white font-medium">Me déconnecter</button>
     </ClientShell>
   );
