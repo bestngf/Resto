@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { btnDanger, btnGhost, btnPrimary, ConfirmDialog, Modal } from "@/components/dashboard/ui";
 import { changeRole, setMemberStatus } from "@/lib/team/api";
+import { restoCodeReset } from "@/lib/auth/credentials";
+import { getSupabase } from "@/lib/supabase/client";
 import { teamError } from "@/lib/team/errors";
 import { assignableRoles, canManageMember, ROLE_HINT, ROLE_LABEL } from "@/lib/team/roles";
 import type { Member, Role } from "@/lib/team/types";
@@ -21,6 +23,8 @@ export default function MemberRow({ m, actorRole, myUserId, activePatrons, onDon
   const [role, setRole] = useState<Role>(m.role);
   const [busy, setBusy] = useState(false);
   const [ask, setAsk] = useState<null | "suspendu" | "retire">(null);
+  const [resetOpen, setResetOpen] = useState(false);
+  const [newCode, setNewCode] = useState("");
   const name = m.profile?.full_name || "Membre sans nom";
   const me = m.user_id === myUserId;
   const lastPatron = m.role === "patron" && m.status === "actif" && activePatrons <= 1;
@@ -64,6 +68,24 @@ export default function MemberRow({ m, actorRole, myUserId, activePatrons, onDon
         onCancel={() => setAsk(null)} onConfirm={() => run(() => setMemberStatus(m.id, "suspendu"), `${name} est suspendu.`)} />
       <ConfirmDialog open={ask === "retire"} danger title={`Retirer ${name} de l'équipe ?`} text="Il perdra son accès. Pour revenir, il devra refaire une demande avec une invitation." confirmLabel="Oui, retirer"
         onCancel={() => setAsk(null)} onConfirm={() => run(() => setMemberStatus(m.id, "retire"), `${name} a été retiré de l'équipe.`)} />
+
+      {manageable && m.status === "actif" && (
+        <button type="button" onClick={() => { setNewCode(""); setResetOpen(true); }} className={btnGhost}>Refaire le code</button>
+      )}
+      <Modal open={resetOpen} title={`Nouveau code pour ${name}`} onClose={() => setResetOpen(false)}>
+        <div className="space-y-3">
+          <p className="text-sm text-stone-600">Choisis un code d&apos;au moins 6 caractères. Communique-le à la personne de vive voix ou par un canal sûr.</p>
+          <input type="text" value={newCode} onChange={(e) => setNewCode(e.target.value)} className="min-h-11 w-full rounded-xl border border-stone-200 px-3" placeholder="Nouveau code" minLength={6} />
+          <button type="button" disabled={busy || newCode.trim().length < 6} className={`${btnPrimary} w-full`} onClick={() => run(async () => {
+            const { data: sess } = await getSupabase().auth.getSession();
+            const token = sess.session?.access_token;
+            if (!token) throw new Error("Session expirée. Reconnecte-toi.");
+            const res = await restoCodeReset(m.user_id, newCode.trim(), token);
+            if (!res.ok) throw new Error(res.message || "Impossible de changer le code.");
+            setResetOpen(false);
+          }, `Nouveau code enregistré pour ${name}.`)}>Enregistrer le code</button>
+        </div>
+      </Modal>
     </li>
   );
 }

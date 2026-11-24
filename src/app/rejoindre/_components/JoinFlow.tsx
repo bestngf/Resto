@@ -64,7 +64,7 @@ export default function JoinFlow({ invite: initialInvite }: { invite: string }) 
     setErr("");
     if (!EMAIL.test(email.trim())) return setErr("Écris une adresse e-mail valide (ex. kofi@gmail.com).");
     setBusy(true);
-    const { error } = await db().auth.signInWithOtp({ email: email.trim(), options: { emailRedirectTo: redirectTo(), shouldCreateUser: true } });
+    window.location.href = `/connexion?next=${encodeURIComponent(redirectTo())}`; return;
     setBusy(false);
     if (error) return setErr("Impossible d'envoyer le lien pour l'instant. Vérifie ta connexion et réessaie.");
     setCooldown(60); setPhase("sent");
@@ -117,19 +117,19 @@ export default function JoinFlow({ invite: initialInvite }: { invite: string }) 
         <div className="mt-4" aria-live="polite">
           <p className="text-lg font-semibold">📬 Regarde ta boîte mail</p>
           <p className="mt-1 text-sm text-stone-700">Nous avons envoyé un lien à <strong>{email.trim()}</strong>. Touche-le pour continuer. Pense à regarder dans les spams.</p>
-          <button type="button" disabled={cooldown > 0 || busy} onClick={sendLink} className={`${btnGhost} mt-4 w-full`}>{cooldown > 0 ? `Renvoyer le lien (${cooldown} s)` : "Renvoyer le lien"}</button>
+          <button type="button" disabled={cooldown > 0 || busy} onClick={sendLink} className={`${btnGhost} mt-4 w-full`}>{cooldown > 0 ? `Retour (${cooldown} s)` : "Retour"}</button>
           <button type="button" onClick={() => { setPhase("login"); setErr(""); }} className="mt-2 min-h-11 w-full text-sm font-semibold underline">Changer d&apos;adresse e-mail</button>
         </div>
       ) : (
         <>
-          <p className="mt-1 text-sm text-stone-700">Connecte-toi sans mot de passe. Ensuite tu crées ton profil et tu envoies ta demande : ton patron la valide.</p>
+          <p className="mt-1 text-sm text-stone-700">Connecte-toi avec ton nom d'utilisateur et ton code, puis reviens ici pour rejoindre l'équipe.</p>
           <label className="mt-4 block">
             <span className="mb-1 block text-sm font-semibold">Ton adresse e-mail</span>
             <input className={inputCls} type="email" inputMode="email" autoComplete="email" placeholder="kofi@gmail.com" value={email} onChange={(e) => setEmail(e.target.value)} onKeyDown={(e) => e.key === "Enter" && sendLink()} />
           </label>
-          <button type="button" disabled={busy} onClick={sendLink} className={`${btnPrimary} mt-3 w-full`}>{busy ? "Envoi…" : "Recevoir mon lien de connexion"}</button>
+          <button type="button" disabled={busy} onClick={sendLink} className={`${btnPrimary} mt-3 w-full`}>{busy ? "Envoi…" : "Aller à la connexion"}</button>
           <p className="my-3 text-center text-sm text-stone-600">ou</p>
-          <button type="button" onClick={google} className={`${btnGhost} w-full`}>Continuer avec Google</button>
+          <button type="button" onClick={google} className={`${btnGhost} w-full`}>Connexion</button>
           {errBox}
           <details className="mt-4 text-sm">
             <summary className="min-h-11 cursor-pointer py-2 font-semibold">Pas d&apos;e-mail ni de compte Google ?</summary>
