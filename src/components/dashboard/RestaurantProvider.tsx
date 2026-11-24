@@ -34,7 +34,7 @@ export function RestaurantProvider({ children }: { children: ReactNode }) {
       if (!auth.user) { router.replace(`/connexion?next=${encodeURIComponent(path || "/dashboard")}`); return; }
       const { data, error } = await db()
         .from("resto_restaurant_members")
-        .select("role, restaurant:resto_restaurants(*)")
+        .select("role, restaurant:resto_restaurants(id,slug,name,cuisine,phone,whatsapp,address,landmark,latitude,longitude,logo_url,cover_url,primary_color,secondary_color,currency,status,accepts_dine_in,accepts_takeaway,accepts_delivery,merchant_status,owner_id,created_at)")
         .eq("user_id", auth.user.id).eq("status", "actif");
       if (error) throw error;
       const memberships = ((data ?? []) as unknown as Membership[]).filter((m) => m.restaurant);

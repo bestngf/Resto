@@ -13,6 +13,7 @@ export interface Restaurant {
   primary_color: string | null; secondary_color: string | null;
   currency: string; status: RestaurantStatus;
   accepts_dine_in: boolean; accepts_takeaway: boolean; accepts_delivery: boolean;
+  merchant_status?: string | null; created_at?: string;
 }
 export interface OrderItem {
   id: string; order_id: string; menu_item_id: string | null; name_snapshot: string;
